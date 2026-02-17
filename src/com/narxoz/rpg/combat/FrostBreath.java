@@ -1,20 +1,39 @@
 package com.narxoz.rpg.combat;
 
 public class FrostBreath implements Ability {
-    @Override
-    public String getName(){
-        return "frost breath";
+    private String name;
+    private int damage;
+    private String description;
+
+    public FrostBreath(String name) {
+        this.name = name;
+        this.damage = 40;
+        this.description = "a cold attack that slows enemies";
     }
+    /*  
+    private FrostBreath(String name, int damage, String description) {
+        this.name = name;
+        this.damage = damage;
+        this.description = description;
+    */
+
+    @Override 
+    public String getName(){
+        return name;
+    }
+
     @Override
     public int getDamage(){
-        return 40;
-    }
+        return damage;
+    } 
+
     @Override
-    public String getDescription (){
-        return "a cold attack that slows enemies";
+    public String getDescription(){
+        return description;
     }
-    @Override
+
+    @Override 
     public Ability clone(){
-        return new FrostBreath();
+        return new FrostBreath(this.name);
     }
 }

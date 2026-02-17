@@ -1,20 +1,39 @@
 package com.narxoz.rpg.combat;
 
 public class IceShield implements Ability {
-    @Override
-    public String getName(){
-        return "ice shield";
+    private String name;
+    private int damage;
+    private String description;
+
+    public IceShield(String name) {
+        this.name = name;
+        this.damage = 5;
+        this.description = "a strong wall of ice for protection";
     }
+    /*  
+    private IceShield(String name, int damage, String description) {
+        this.name = name;
+        this.damage = damage;
+        this.description = description;
+    */
+
+    @Override 
+    public String getName(){
+        return name;
+    }
+
     @Override
     public int getDamage(){
-        return 5;
-    }
+        return damage;
+    } 
+
     @Override
     public String getDescription(){
-        return "a strong wall of ice for protection";
+        return description;
     }
-    @Override
+
+    @Override 
     public Ability clone(){
-        return new IceShield();
+        return new IceShield(this.name);
     }
 }

@@ -1,21 +1,40 @@
 package com.narxoz.rpg.combat;
 
 public class ShadowStrike implements Ability {
-    @Override 
-    public String getName() { 
-        return "Shadow Strike"; 
+    private String name;
+    private int damage;
+    private String description;
+
+    public ShadowStrike(String name) {
+        this.name = name;
+        this.damage = 70;
+        this.description = "a sudden attack from the dark";
     }
+    /*  
+    private ShadowStrike(String name, int damage, String description) {
+        this.name = name;
+        this.damage = damage;
+        this.description = description;
+    */
+
     @Override 
-    public int getDamage() { 
-        return 70; 
+    public String getName(){
+        return name;
     }
-    @Override 
-    public String getDescription() { 
-        return "a sudden attack from the dark"; 
+
+    @Override
+    public int getDamage(){
+        return damage;
+    } 
+
+    @Override
+    public String getDescription(){
+        return description;
     }
+
     @Override 
-    public Ability clone() { 
-        return new ShadowStrike();
+    public Ability clone(){
+        return new ShadowStrike(this.name);
     }
     
 }
