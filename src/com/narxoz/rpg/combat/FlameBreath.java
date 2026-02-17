@@ -12,7 +12,7 @@ public class FlameBreath implements Ability {
 
     } 
     public String getDescription(){
-        return "Used to hit heroes with a wave of fire";
+        return "used to hit heroes with a wave of fire";
     }
     @Override 
     public Ability clone(){
