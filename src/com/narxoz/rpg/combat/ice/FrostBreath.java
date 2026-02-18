@@ -1,17 +1,19 @@
-package com.narxoz.rpg.combat;
+package com.narxoz.rpg.combat.ice;
 
-public class ShadowStrike implements Ability {
+import com.narxoz.rpg.combat.Ability;
+
+public class FrostBreath implements Ability {
     private String name;
     private int damage;
     private String description;
 
-    public ShadowStrike(String name) {
+    public FrostBreath(String name) {
         this.name = name;
-        this.damage = 70;
-        this.description = "a sudden attack from the dark";
+        this.damage = 40;
+        this.description = "a cold attack that slows enemies";
     }
     /*  
-    private ShadowStrike(String name, int damage, String description) {
+    private FrostBreath(String name, int damage, String description) {
         this.name = name;
         this.damage = damage;
         this.description = description;
@@ -34,7 +36,6 @@ public class ShadowStrike implements Ability {
 
     @Override 
     public Ability clone(){
-        return new ShadowStrike(this.name);
+        return new FrostBreath(this.name);
     }
-    
 }

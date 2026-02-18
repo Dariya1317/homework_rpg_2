@@ -1,13 +1,13 @@
 package com.narxoz.rpg.factory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.narxoz.rpg.combat.Ability;
-import com.narxoz.rpg.combat.ShadowStrike;
-import com.narxoz.rpg.combat.Vanish;
+import com.narxoz.rpg.combat.shadow.DarkNova;
+import com.narxoz.rpg.combat.shadow.ShadowStrike;
+import com.narxoz.rpg.combat.shadow.Vanish;
 import com.narxoz.rpg.loot.LootTable;
 import com.narxoz.rpg.loot.ShadowLootTable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShadowComponentFactory implements EnemyComponentFactory {
     @Override
@@ -15,6 +15,7 @@ public class ShadowComponentFactory implements EnemyComponentFactory {
         List<Ability> abilities = new ArrayList<>();
         abilities.add(new ShadowStrike("Shadow Strike"));
         abilities.add(new Vanish("Vanish"));
+        abilities.add(new DarkNova("Dark Nova"));
         return abilities;
     }
 

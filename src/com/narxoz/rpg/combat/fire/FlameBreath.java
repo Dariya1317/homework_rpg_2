@@ -1,40 +1,43 @@
-package com.narxoz.rpg.combat;
+package com.narxoz.rpg.combat.fire;
 
-public class Vanish implements Ability {
+import com.narxoz.rpg.combat.Ability;
+
+public class FlameBreath implements Ability {
     private String name;
     private int damage;
     private String description;
 
-    public Vanish(String name) {
+    public FlameBreath(String name) {
         this.name = name;
-        this.damage = 0;
-        this.description = "hide in the shadows to avoid attacks";
+        this.damage = 50;
+        this.description = "Roasts heroes with a cone of fire";
     }
+    
     /*  
-    private Vanish(String name, int damage, String description) {
+    private FlameBreath(String name, int damage, String description) {
         this.name = name;
         this.damage = damage;
         this.description = description;
     */
-
+    
     @Override 
     public String getName(){
         return name;
+    
     }
-
     @Override
     public int getDamage(){
         return damage;
-    } 
 
-    @Override
+    } 
     public String getDescription(){
         return description;
     }
-
     @Override 
     public Ability clone(){
-        return new Vanish(this.name);
+        return new FlameBreath(this.name);
+
     }
-}
+
     
+}

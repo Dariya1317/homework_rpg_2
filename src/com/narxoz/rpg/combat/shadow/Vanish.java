@@ -1,17 +1,19 @@
-package com.narxoz.rpg.combat;
+package com.narxoz.rpg.combat.shadow;
 
-public class FireShield implements Ability {
+import com.narxoz.rpg.combat.Ability;
+
+public class Vanish implements Ability {
     private String name;
     private int damage;
     private String description;
 
-    public FireShield(String name) {
+    public Vanish(String name) {
         this.name = name;
-        this.damage = 10;
-        this.description = "creates a ring of fire around the user";
+        this.damage = 0;
+        this.description = "hide in the shadows to avoid attacks";
     }
     /*  
-    private FireShield(String name, int damage, String description) {
+    private Vanish(String name, int damage, String description) {
         this.name = name;
         this.damage = damage;
         this.description = description;
@@ -34,9 +36,7 @@ public class FireShield implements Ability {
 
     @Override 
     public Ability clone(){
-        return new FireShield(this.name);
+        return new Vanish(this.name);
     }
-  
-
-    
 }
+    

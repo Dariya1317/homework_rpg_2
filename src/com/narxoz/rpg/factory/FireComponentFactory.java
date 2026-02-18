@@ -1,13 +1,13 @@
 package com.narxoz.rpg.factory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.narxoz.rpg.combat.Ability;
-import com.narxoz.rpg.combat.FireShield;
-import com.narxoz.rpg.combat.FlameBreath;
+import com.narxoz.rpg.combat.fire.FireShield;
+import com.narxoz.rpg.combat.fire.FlameBreath;
+import com.narxoz.rpg.combat.fire.MeteorStorm;
 import com.narxoz.rpg.loot.FireLootTable;
 import com.narxoz.rpg.loot.LootTable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FireComponentFactory implements EnemyComponentFactory {
    @Override
@@ -15,6 +15,7 @@ public class FireComponentFactory implements EnemyComponentFactory {
         List<Ability> abilities = new ArrayList<>();
         abilities.add(new FlameBreath("Flame Breath"));
         abilities.add(new FireShield("Fire Shield"));
+        abilities.add(new MeteorStorm("Meteor Storm"));
         return abilities;
     }
 

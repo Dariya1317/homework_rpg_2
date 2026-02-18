@@ -1,41 +1,44 @@
-package com.narxoz.rpg.combat;
+package com.narxoz.rpg.combat.fire;
 
-public class FlameBreath implements Ability {
+import com.narxoz.rpg.combat.Ability;
+
+public class FireShield implements Ability {
     private String name;
     private int damage;
     private String description;
 
-    public FlameBreath(String name) {
+    public FireShield(String name) {
         this.name = name;
-        this.damage = 50;
-        this.description = "Roasts heroes with a cone of fire";
+        this.damage = 10;
+        this.description = "creates a ring of fire around the user";
     }
-    
     /*  
-    private FlameBreath(String name, int damage, String description) {
+    private FireShield(String name, int damage, String description) {
         this.name = name;
         this.damage = damage;
         this.description = description;
     */
-    
+
     @Override 
     public String getName(){
         return name;
-    
     }
+
     @Override
     public int getDamage(){
         return damage;
-
     } 
+
+    @Override
     public String getDescription(){
         return description;
     }
+
     @Override 
     public Ability clone(){
-        return new FlameBreath(this.name);
-
+        return new FireShield(this.name);
     }
+  
 
     
 }

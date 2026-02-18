@@ -122,4 +122,18 @@ public class Goblin implements Enemy {
     // - void addAbility(Ability ability) — for enhanced variants
     // - void setElement(String element) — for elemental variants
 
+
+    @Override
+    public Enemy clone() {
+        Goblin copy = new Goblin(this.name);
+        copy.health = this.health;
+        copy.damage = this.damage;
+        copy.defense = this.defense;
+        copy.speed = this.speed;
+
+        copy.abilities = new ArrayList<>();
+        for (Ability a : this.abilities) copy.abilities.add(a.clone());
+        if (this.lootTable != null) copy.lootTable = this.lootTable.clone();
+        return copy;
+    }
 }

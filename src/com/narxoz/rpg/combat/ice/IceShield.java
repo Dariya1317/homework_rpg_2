@@ -1,4 +1,6 @@
-package com.narxoz.rpg.combat;
+package com.narxoz.rpg.combat.ice;
+
+import com.narxoz.rpg.combat.Ability;
 
 public class IceShield implements Ability {
     private String name;
