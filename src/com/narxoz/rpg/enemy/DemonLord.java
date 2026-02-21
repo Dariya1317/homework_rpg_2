@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DragonBoss implements Enemy {
+public class DemonLord implements Enemy {
     private String name;
     private int health;
     private int damage;
@@ -18,16 +18,14 @@ public class DragonBoss implements Enemy {
     private Map<Integer, Integer> phases;
     private LootTable lootTable;
     private String aiBehavior;
-    private boolean canFly;
-    private boolean hasBreathAttack;
-    private int wingspan;
+    private boolean canSummon;
+    private int auraOfFear;
 
-    // ИСПРАВЛЕНО: добавил public
-    public DragonBoss(String name, int health, int damage, int defense, int speed, 
-                      String element, List<Ability> abilities,
-                      int phase1Threshold, int phase2Threshold, int phase3Threshold,
-                      LootTable lootTable, String aiBehavior,
-                      boolean canFly, boolean hasBreathAttack, int wingspan) {
+    public DemonLord(String name, int health, int damage, int defense, int speed, 
+                     String element, List<Ability> abilities,
+                     int phase1Threshold, int phase2Threshold, int phase3Threshold,
+                     LootTable lootTable, String aiBehavior,
+                     boolean canSummon, int auraOfFear) {
         this.name = name;
         this.health = health;
         this.damage = damage;
@@ -41,15 +39,14 @@ public class DragonBoss implements Enemy {
         this.phases.put(3, phase3Threshold);
         this.lootTable = lootTable;
         this.aiBehavior = aiBehavior;
-        this.canFly = canFly;
-        this.hasBreathAttack = hasBreathAttack;
-        this.wingspan = wingspan;
+        this.canSummon = canSummon;
+        this.auraOfFear = auraOfFear;
     }
 
-    private DragonBoss(String name, int health, int damage, int defense, int speed,
-                       String element, List<Ability> abilities, Map<Integer, Integer> phases,
-                       LootTable lootTable, String aiBehavior,
-                       boolean canFly, boolean hasBreathAttack, int wingspan) {
+    private DemonLord(String name, int health, int damage, int defense, int speed,
+                      String element, List<Ability> abilities, Map<Integer, Integer> phases,
+                      LootTable lootTable, String aiBehavior,
+                      boolean canSummon, int auraOfFear) {
         this.name = name;
         this.health = health;
         this.damage = damage;
@@ -60,48 +57,31 @@ public class DragonBoss implements Enemy {
         this.phases = phases;
         this.lootTable = lootTable;
         this.aiBehavior = aiBehavior;
-        this.canFly = canFly;
-        this.hasBreathAttack = hasBreathAttack;
-        this.wingspan = wingspan;
+        this.canSummon = canSummon;
+        this.auraOfFear = auraOfFear;
     }
     @Override
 public void setName(String name) {
     this.name = name;
 }
-    @Override
-    public String getName() { return name; }
-
-    @Override
-    public int getHealth() { return health; }
-
-    @Override
-    public int getDamage() { return damage; }
-
-    @Override
-    public int getDefense() { return defense; }
-
-    @Override
-    public int getSpeed() { return speed; }
-
-    @Override
-    public String getElement() { return element; }
-
-    @Override
-    public List<Ability> getAbilities() { return abilities; }
-
-    @Override
-    public LootTable getLootTable() { return lootTable; }
+    @Override public String getName() { return name; }
+    @Override public int getHealth() { return health; }
+    @Override public int getDamage() { return damage; }
+    @Override public int getDefense() { return defense; }
+    @Override public int getSpeed() { return speed; }
+    @Override public String getElement() { return element; }
+    @Override public List<Ability> getAbilities() { return abilities; }
+    @Override public LootTable getLootTable() { return lootTable; }
 
     @Override
     public void displayInfo() {
-        System.out.println("=== " + name + " (Dragon Boss) ===");
+        System.out.println("=== " + name + " (Demon Lord) ===");
         System.out.println("Health: " + health + " | Damage: " + damage 
                 + " | Defense: " + defense + " | Speed: " + speed);
         System.out.println("Element: " + element);
         System.out.println("AI Behavior: " + aiBehavior);
-        System.out.println("Special: " + (canFly ? "Can Fly" : "Cannot Fly") 
-                + " | Breath: " + (hasBreathAttack ? "Yes" : "No") 
-                + " | Wingspan: " + wingspan + "m");
+        System.out.println("Special: " + (canSummon ? "Can Summon Minions" : "Cannot Summon") 
+                + " | Aura of Fear: " + auraOfFear);
         System.out.println("Abilities (" + abilities.size() + "):");
         for (Ability a : abilities) {
             System.out.println("  - " + a.getName() + " (Damage: " + a.getDamage() + ") - " + a.getDescription());
@@ -121,6 +101,7 @@ public void setName(String name) {
         this.damage = (int)(this.damage * multiplier);
         this.defense = (int)(this.defense * multiplier);
         this.speed = (int)(this.speed * multiplier);
+        this.auraOfFear = (int)(this.auraOfFear * multiplier);
         
         Map<Integer, Integer> newPhases = new HashMap<>();
         for (Map.Entry<Integer, Integer> phase : phases.entrySet()) {
@@ -142,26 +123,12 @@ public void setName(String name) {
         }
         
         Map<Integer, Integer> clonedPhases = new HashMap<>(this.phases);
-        
         LootTable clonedLoot = (this.lootTable != null) ? this.lootTable.clone() : null;
         
-        return new DragonBoss(
-            this.name,
-            this.health,
-            this.damage,
-            this.defense,
-            this.speed,
-            this.element,
-            clonedAbilities,
-            clonedPhases,
-            clonedLoot,
-            this.aiBehavior,
-            this.canFly,
-            this.hasBreathAttack,
-            this.wingspan
+        return new DemonLord(
+            this.name, this.health, this.damage, this.defense, this.speed,
+            this.element, clonedAbilities, clonedPhases,
+            clonedLoot, this.aiBehavior, this.canSummon, this.auraOfFear
         );
     }
-    
 }
-
-

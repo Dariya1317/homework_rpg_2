@@ -5,32 +5,46 @@ import java.util.List;
 
 public class ShadowLootTable implements LootTable {
     private List<String> items;
+    private int goldDrop;
+    private int expDrop;
+
     public ShadowLootTable() {
         this.items = new ArrayList<>();
-        this.items.add("Shadow Essence");
-        this.items.add("Dark Soul");
+        this.items.add("Shadow Gem");     
+        this.items.add("Dark Essence");    
+        this.items.add("Shadow Rune");    
+        this.goldDrop = 200;
+        this.expDrop = 500;
     }
-    private ShadowLootTable(List<String> items) {
-        this.items = new ArrayList<>(items); 
+
+    private ShadowLootTable(List<String> items, int goldDrop, int expDrop) {
+        this.items = new ArrayList<>(items);
+        this.goldDrop = goldDrop;
+        this.expDrop = expDrop;
     }
+
     @Override
     public List<String> getItems() {
         return items;
     }
+    
     @Override 
     public int getGoldDrop() { 
-        return 200; 
+        return goldDrop; 
     }
+    
     @Override 
     public int getExperienceDrop() { 
-        return 500; 
+        return expDrop; 
     }
+    
     @Override 
     public String getLootInfo() { 
-        return "drops shadow items: " + items; 
+        return "Shadow theme loot: " + items + " | Gold: " + goldDrop + " | Exp: " + expDrop;
     }
+    
     @Override 
     public LootTable clone() { 
-        return new ShadowLootTable(this.items); 
+        return new ShadowLootTable(this.items, this.goldDrop, this.expDrop); 
     }
 }

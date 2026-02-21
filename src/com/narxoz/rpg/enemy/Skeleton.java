@@ -5,7 +5,7 @@ import com.narxoz.rpg.loot.LootTable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Goblin implements Enemy {
+public class Skeleton implements Enemy {
     private String name;
     private int health;
     private int damage;
@@ -16,18 +16,19 @@ public class Goblin implements Enemy {
     private List<Ability> abilities;
     private LootTable lootTable;
 
-    public Goblin(String name) {
+    public Skeleton(String name) {
         this.name = name;
-        this.health = 100;
-        this.damage = 15;
-        this.defense = 5;
-        this.speed = 35;
+        this.health = 80;
+        this.damage = 20;
+        this.defense = 10;
+        this.speed = 25;
         this.element = "NONE";
-        this.aiBehavior = "BASIC";
+        this.aiBehavior = "RELENTLESS";
         this.abilities = new ArrayList<>();
     }
-    private Goblin(String name, int health, int damage, int defense, int speed, 
-                   String element, String aiBehavior, List<Ability> abilities, LootTable lootTable) {
+
+    private Skeleton(String name, int health, int damage, int defense, int speed, 
+                     String element, String aiBehavior, List<Ability> abilities, LootTable lootTable) {
         this.name = name;
         this.health = health;
         this.damage = damage;
@@ -42,36 +43,19 @@ public class Goblin implements Enemy {
 public void setName(String name) {
     this.name = name;
 }
-
-    @Override
-    public String getName() { return name; }
-
-    @Override
-    public int getHealth() { return health; }
-
-    @Override
-    public int getDamage() { return damage; }
-
-    @Override
-    public int getDefense() { return defense; }
-
-    @Override
-    public int getSpeed() { return speed; }
-
-    @Override
-    public String getElement() { return element; }
-
-    @Override
-    public List<Ability> getAbilities() { return abilities; }
-
-    @Override
-    public LootTable getLootTable() { return lootTable; }
-
+    @Override public String getName() { return name; }
+    @Override public int getHealth() { return health; }
+    @Override public int getDamage() { return damage; }
+    @Override public int getDefense() { return defense; }
+    @Override public int getSpeed() { return speed; }
+    @Override public String getElement() { return element; }
+    @Override public List<Ability> getAbilities() { return abilities; }
+    @Override public LootTable getLootTable() { return lootTable; }
     public void setLootTable(LootTable lootTable) { this.lootTable = lootTable; }
 
     @Override
     public void displayInfo() {
-        System.out.println("=== " + name + " (Goblin) ===");
+        System.out.println("=== " + name + " (Skeleton) ===");
         System.out.println("Health: " + health + " | Damage: " + damage 
                 + " | Defense: " + defense + " | Speed: " + speed);
         System.out.println("Element: " + element);
@@ -105,19 +89,7 @@ public void setName(String name) {
             clonedAbilities.add(a.clone());
         }
         LootTable clonedLoot = (this.lootTable != null) ? this.lootTable.clone() : null;
-        
-        return new Goblin(
-            this.name,
-            this.health,
-            this.damage,
-            this.defense,
-            this.speed,
-            this.element,
-            this.aiBehavior,
-            clonedAbilities,
-            clonedLoot
-        );
+        return new Skeleton(this.name, this.health, this.damage, this.defense, this.speed,
+                            this.element, this.aiBehavior, clonedAbilities, clonedLoot);
     }
-               
-    
 }
